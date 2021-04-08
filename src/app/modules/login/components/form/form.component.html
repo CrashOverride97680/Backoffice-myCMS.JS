@@ -24,7 +24,7 @@
          'invalid': password.dirty && password.invalid
       }"
     >
-      <input type="password" #password="ngModel" id="password" placeholder="Password" name="password" title ="Insert password cms" ngModel pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required>
+      <input type="password" #password="ngModel" id="password" placeholder="Password" name="password" title ="Insert password cms" ngModel minlength="8" required>
     </div>
     <div class="form-group mt-4">
       <button type="submit" class="btn btn-primary"[disabled]="loginForm.invalid">Submit</button>
