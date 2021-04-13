@@ -1,0 +1,3 @@
+interface httpTokenInterceptors {
+  token: string;
+}
