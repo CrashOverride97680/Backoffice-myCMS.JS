@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  loginEntrypoint: "Write in this line your server address"
+  apiEntrypoint: 'Write in this line your server address'
 };
 
 /*
