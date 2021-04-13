@@ -4,12 +4,14 @@ import { ContainerComponent } from './components/container/container.component';
 import { ColComponent } from './components/col/col.component';
 import { RowComponent } from './components/row/row.component';
 import { ImageComponent } from './components/image/image.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 @NgModule({
   declarations: [
     ContainerComponent,
     ColComponent,
     RowComponent,
-    ImageComponent
+    ImageComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule
@@ -18,7 +20,8 @@ import { ImageComponent } from './components/image/image.component';
         ContainerComponent,
         ColComponent,
         ImageComponent,
-        RowComponent
+        RowComponent,
+        SpinnerComponent
     ]
 })
 export class SharedModule { }

@@ -14,7 +14,9 @@
       class="col-4 d-flex align-items-center justify-content-center"
       style="height: 100vh;"
     >
-      <app-form></app-form>
+      <app-form (changeSpinner)="changeSpinner()"></app-form>
     </div>
   </app-row>
 </app-container>
+
+<app-spinner [view]="spinner"></app-spinner>

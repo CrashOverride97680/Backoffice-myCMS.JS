@@ -11,9 +11,9 @@
         id="email"
         #email="ngModel"
         ngModel
-        placeholder="Email"
+        placeholder="email"
         name="email"
-        title="Insert email CMS"
+        title="Insert email"
         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
         required
       >
@@ -24,7 +24,7 @@
          'invalid': password.dirty && password.invalid
       }"
     >
-      <input type="password" #password="ngModel" id="password" placeholder="Password" name="password" title ="Insert password cms" ngModel pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" required>
+      <input type="password" #password="ngModel" id="password" placeholder="password" name="password" title="Insert password" ngModel minlength="6" required>
     </div>
     <div class="form-group mt-4">
       <button type="submit" class="btn btn-primary"[disabled]="loginForm.invalid">Submit</button>
