@@ -13,11 +13,15 @@ export class AdminGuard implements CanActivate {
   canActivate(): any {
     try {
       const jwtHelper = new JwtHelperService();
-      const token = localStorage.getItem('token');
-      const auth: boolean = jwtHelper.decodeToken(token).auth;
-      const admin: boolean = jwtHelper.decodeToken(token).admin;
-      if (admin && auth)
-        return true;
+      const token: string | undefined = localStorage?.getItem('token') || undefined;
+      const isExpiredToken: boolean = jwtHelper.isTokenExpired(token);
+      if (!isExpiredToken) {
+        const auth: boolean = jwtHelper.decodeToken(token)?.auth || false;
+        const admin: boolean = jwtHelper.decodeToken(token)?.admin || false;
+        if (admin && auth) {
+          return true;
+        }
+      }
     }
     catch (e) {
       localStorage.clear();
