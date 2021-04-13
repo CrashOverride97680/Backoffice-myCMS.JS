@@ -1,3 +1,3 @@
-interface httpTokenInterceptors {
+export interface HttpTokenInterceptor {
   token: string;
 }
