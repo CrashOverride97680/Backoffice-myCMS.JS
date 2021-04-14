@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent {
+  public error: boolean = false;
   @Output() changeSpinner = new EventEmitter<void>();
 
   constructor(
@@ -25,6 +26,8 @@ export class FormComponent {
       },
       error: e => {
         console.log('Error message:', e);
+        this.error = true;
+        setTimeout(() => this.error = false, 3000);
         this.changeSpinner.emit();
       }
     });

@@ -24,9 +24,22 @@
          'invalid': password.dirty && password.invalid
       }"
     >
-      <input type="password" #password="ngModel" id="password" placeholder="password" name="password" title="Insert password" ngModel minlength="6" required>
+      <input
+        type="password"
+        #password="ngModel"
+        id="password"
+        placeholder="password"
+        name="password"
+        title="Insert password"
+        ngModel
+        minlength="6"
+        required
+      >
     </div>
-    <div class="form-group mt-4">
+    <div class="mt-2" *ngIf="error">
+      <strong class="h4 text-danger">*email or password incorrect.</strong>
+    </div>
+    <div class="form-group mt-3">
       <button type="submit" class="btn btn-primary"[disabled]="loginForm.invalid">Submit</button>
     </div>
 </form>
