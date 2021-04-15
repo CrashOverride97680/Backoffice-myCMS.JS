@@ -12,7 +12,7 @@
     font-size: 1.125rem;
     color: rgba(104, 136, 228, .5);
     border-radius: .35rem;
-    fa-icon {
+    .icon {
       color: rgba(104, 136, 228, .3) !important;
     }
     &:hover {
@@ -39,7 +39,7 @@
     text-align: center;
     z-index: 1;
     color: #ffffff;
-    fa-icon {
+    .icon {
       font-size: 1.75rem;
     }
     strong {
@@ -47,7 +47,7 @@
     }
   }
   .nav-item, .iconMarg {
-    fa-icon {
+    .icon {
       margin-right: .50rem;
       font-size: 1.125rem;
       color: rgba(255,255,255,.3);
@@ -68,7 +68,7 @@
     -ms-transition: .5s all ease;
     -o-transition: .5s all ease;
     &:hover {
-      fa-icon {
+      .icon {
         color: #ffffff;
       }
       color: #ffffff;
@@ -92,7 +92,7 @@
     border-top: 1px solid rgba(255,255,255,.15);
     margin: 0 1rem 1rem;
   }
-  fa-icon {
+  .icon {
     display: inline-block;
     width: 1.5rem;
   }
@@ -105,7 +105,7 @@
   }
   [data-active=true] {
     color: #ffffff;
-    fa-icon {
+    .icon {
       color: #ffffff;
     }
   }
@@ -114,4 +114,8 @@
     margin: 0 !important;
     text-align: right !important;
   }
+}
+.bottom {
+  position: absolute;
+  bottom: 0;
 }
