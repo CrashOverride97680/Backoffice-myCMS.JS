@@ -5,23 +5,37 @@
   </div>
   <hr class="leftbar-divider" style="margin-bottom: 0 !important;">
   <div class="dashlink iconMarg">
-    <a routerLink="/dashboard" title="Go to Dashboard"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+    <a routerLink="/dashboard" title="Go to Dashboard"><i class="fas fa-tachometer-alt icon"></i>Dashboard</a>
   </div>
   <hr class="leftbar-divider">
   <div class="nav-group">
     <strong>Cms</strong>
-    <ul class="cms-nav nav-list">
-      <li class="nav-item icon">
-        <a routerLink="/dashboard" title="Go to Dashboard"><i class="fa-tachometer-alt"></i>Dashboard</a>
-      </li>
-
-    </ul>
+    <div class="dashlink iconMarg">
+      <a routerLink="/posts" title="Go to Posts"><i class="fas fa-clipboard icon"></i>Posts</a>
+    </div>
+    <div class="dashlink iconMarg">
+      <a routerLink="/categories" title="Go to Categories"><i class="fas fa-list icon"></i>Categories</a>
+    </div>
   </div>
   <div class="nav-group">
-    <ul class="addons-nav nav-list">
-      <li class="nav-item">
-
-      </li>
-    </ul>
+    <strong>Media</strong>
+    <div class="dashlink iconMarg">
+        <a routerLink="/images" title="Go to Images"><i class="fas fa-images icon"></i>Images</a>
+    </div>
+    <div class="dashlink iconMarg">
+        <a routerLink="/videos" title="Go to Videos"><i class="fas fa-video icon"></i>Videos</a>
+    </div>
+  </div>
+  <div class="nav-group">
+    <strong>Settings</strong>
+    <div class="dashlink iconMarg">
+      <a routerLink="/generals" title="Go to Generals"><i class="fas fa-cogs icon"></i>Generals</a>
+    </div>
+    <div class="dashlink iconMarg">
+      <a routerLink="/users" title="Go to Users"><i class="fas fa-users-cog icon"></i>Users</a>
+    </div>
+    <div class="dashlink iconMarg bottom">
+      <a routerLink="#" title="Logout"><i class="fas fa-sign-out-alt icon"></i>Logout</a>
+    </div>
   </div>
 </nav>
