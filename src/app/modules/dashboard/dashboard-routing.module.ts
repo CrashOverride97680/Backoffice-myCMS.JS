@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { AdminGuard } from '../../core/guards/admin-guard/admin-guard';
-
+import { AdminGuard } from '../../core/guards/admin-guard/admin.guard';
 const routes: Routes = [
   {
     path: '',
