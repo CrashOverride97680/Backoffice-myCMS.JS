@@ -28,24 +28,6 @@
   .card {
     margin: 1rem;
   }
-  .logoHome {
-    display: block;
-    width: 14rem;
-    width: 100%;
-    height: 4.375rem;
-    font-size: 1.375rem;
-    font-weight: 800;
-    padding: 1.5rem 1rem;
-    text-align: center;
-    z-index: 1;
-    color: #ffffff;
-    .icon {
-      font-size: 1.75rem;
-    }
-    strong {
-      margin-left: 1rem;
-    }
-  }
   .nav-item, .iconMarg {
     .icon {
       margin-right: .50rem;
@@ -87,10 +69,6 @@
       font-weight: 800;
       font-size: .65rem;
     }
-  }
-  .leftbar-divider {
-    border-top: 1px solid rgba(255,255,255,.15);
-    margin: 0 1rem 1rem;
   }
   .icon {
     display: inline-block;
