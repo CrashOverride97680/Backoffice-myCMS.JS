@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AsideService } from './core/static/components/aside/services/aside.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'CMS';
+  public view: boolean = false;
+  constructor(
+    private asideData: AsideService
+  ) {
+    this.asideData.data$.subscribe(d => this.view = d.view);
+  }
 }
