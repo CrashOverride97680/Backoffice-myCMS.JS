@@ -2,14 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-bottomlogout',
-  templateUrl: './bottomlogout.component.html',
+  template: `
+    <div class="dashlink iconMarg bottom">
+      <a routerLink="#" title="Logout"><i class="fas fa-sign-out-alt icon"></i>Logout</a>
+    </div>
+  `,
   styleUrls: ['./bottomlogout.component.scss']
 })
-export class BottomlogoutComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class BottomlogoutComponent {}
