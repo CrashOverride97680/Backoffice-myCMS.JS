@@ -8,8 +8,8 @@ import {
   HttpGetNumPayInterceptor,
   HttpGetPostsNumbersInterceptor,
   HttpLogoutInterceptor, HttpPostInterceptor,
-  HttpTokenInterceptor
-} from '../interceptors/http.token.interceptor';
+  HttpInterceptor
+} from '../interceptors/http.interceptor';
 import {
   LoginPrefixInterceptor,
   GetPostsByMaxNumberPrefixInterceptor
@@ -24,10 +24,10 @@ export class HttpService {
   ) {}
 
 // LOGIN USER
-  public login(data: LoginPrefixInterceptor): Observable<HttpTokenInterceptor> {
+  public login(data: LoginPrefixInterceptor): Observable<HttpInterceptor> {
     const url = `${environment.apiEntrypoint}/login`;
     const { email, password } = data;
-    return this.http.post<HttpTokenInterceptor>(url, { email, password });
+    return this.http.post<HttpInterceptor>(url, { email, password });
   }
 
 // LOGOUT USERS

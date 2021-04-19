@@ -2,7 +2,6 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpService } from '../../../../core/http/http.service';
 import { Router } from '@angular/router';
-import { AsideService } from '../../../../core/static/components/aside/services/aside.service';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -14,8 +13,7 @@ export class FormComponent {
 
   constructor(
     private api: HttpService,
-    private route: Router,
-    private aside: AsideService
+    private route: Router
   ) {}
 
   send(form: NgForm): void {
