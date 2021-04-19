@@ -1,38 +1,40 @@
-<nav class="leftbar">
+<nav class="aside">
   <app-aside-logo></app-aside-logo>
-  <app-divider></app-divider>
-  <div class="dashlink iconMarg">
-    <a routerLink="/dashboard" title="Go to Dashboard"><i class="fas fa-tachometer-alt icon"></i>Dashboard</a>
-  </div>
-  <app-divider></app-divider>
-  <div class="nav-group">
-    <strong>Cms</strong>
-    <div class="dashlink iconMarg">
-      <a routerLink="/posts" title="Go to Posts"><i class="fas fa-clipboard icon"></i>Posts</a>
-    </div>
-    <div class="dashlink iconMarg">
-      <a routerLink="/categories" title="Go to Categories"><i class="fas fa-list icon"></i>Categories</a>
-    </div>
-  </div>
-  <div class="nav-group">
-    <strong>Media</strong>
-    <div class="dashlink iconMarg">
-        <a routerLink="/images" title="Go to Images"><i class="fas fa-images icon"></i>Images</a>
-    </div>
-    <div class="dashlink iconMarg">
-        <a routerLink="/videos" title="Go to Videos"><i class="fas fa-video icon"></i>Videos</a>
-    </div>
-  </div>
-  <div class="nav-group">
-    <strong>Settings</strong>
-    <div class="dashlink iconMarg">
-      <a routerLink="/generals" title="Go to Generals"><i class="fas fa-cogs icon"></i>Generals</a>
-    </div>
-    <div class="dashlink iconMarg">
-      <a routerLink="/users" title="Go to Users"><i class="fas fa-users-cog icon"></i>Users</a>
-    </div>
-    <div class="dashlink iconMarg bottom">
-      <a routerLink="#" title="Logout"><i class="fas fa-sign-out-alt icon"></i>Logout</a>
-    </div>
-  </div>
+  <app-divider>
+    <app-dashlink [routes]="['dashboard']" [icons]="['fa-tachometer-alt']"></app-dashlink>
+  </app-divider>
+  <app-navgroup
+    [titleGroup]="'cms'"
+    [icons]="[
+      'fa-clipboard',
+      'fa-list'
+    ]"
+    [routes]="[
+      'post',
+      'categories'
+    ]"
+  ></app-navgroup>
+  <app-navgroup
+    [titleGroup]="'media'"
+    [icons]="[
+      'fa-images',
+      'fa-video'
+    ]"
+    [routes]="[
+      'images',
+      'videos'
+    ]"
+  ></app-navgroup>
+  <app-navgroup
+    [titleGroup]="'settings'"
+    [icons]="[
+      'fa-cogs',
+      'fa-users-cog'
+    ]"
+    [routes]="[
+      'generals',
+      'users'
+    ]"
+  ></app-navgroup>
+  <app-bottomlogout></app-bottomlogout>
 </nav>
