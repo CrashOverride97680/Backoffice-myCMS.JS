@@ -41,13 +41,14 @@ export interface SeoSemInterfaces {
 }
 
 export interface HttpPostInterceptor {
-  _id: string,
-  lang: string,
-  type: string,
-  title: string,
-  seo: SeoSemInterfaces,
-  content: string,
-  important: number,
-  visible: boolean,
-  category: string[]
+  _id: string;
+  lang: string;
+  type: string;
+  title: string;
+  seo: SeoSemInterfaces;
+  content: string;
+  important: number;
+  visible: boolean;
+  category: string[];
+  updated?: string;
 }
