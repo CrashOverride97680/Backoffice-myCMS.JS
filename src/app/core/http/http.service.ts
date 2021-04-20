@@ -7,7 +7,8 @@ import {
   HttpGetNumChatInterceptor,
   HttpGetNumPayInterceptor,
   HttpGetPostsNumbersInterceptor,
-  HttpLogoutInterceptor, HttpPostInterceptor,
+  HttpLogoutInterceptor,
+  HttpPostInterceptor,
   HttpInterceptor
 } from '../interceptors/http.interceptor';
 import {
@@ -32,57 +33,57 @@ export class HttpService {
 
 // LOGOUT USERS
   public logout(token: string): Observable<HttpLogoutInterceptor> {
-    const url = `${environment.loginEntrypoint}/logout`;
+    const url = `${environment.apiEntrypoint}/logout`;
     return this.http.post<HttpLogoutInterceptor>(url, { headers: { authorization: token }});
   }
 
 // GET NUMBER POSTS
   public getNumPosts(token: string): Observable<HttpGetPostsNumbersInterceptor> {
-    const url = `${environment.loginEntrypoint}/getPostsNumbers`;
-    return this.http.get<HttpGetPostsNumbers>(url, { headers: { authorization: token }});
+    const url = `${environment.apiEntrypoint}/getPostsNumbers`;
+    return this.http.get<HttpGetPostsNumbersInterceptor>(url, { headers: { authorization: token }});
   }
 
 // GET NUMBER SUBSCRIBE
   public getNumMailSub(token: string): Observable<HttpGetMailSubNumbersInterceptor> {
-    const url = `${environment.loginEntrypoint}/getMailSubNumbers`;
-    return this.http.get<HttpGetMailSubNumbers>(url, { headers: { authorization: token }});
+    const url = `${environment.apiEntrypoint}/getMailSubNumbers`;
+    return this.http.get<HttpGetMailSubNumbersInterceptor>(url, { headers: { authorization: token }});
   }
 
 // GET NUMBER MESSAGE USERS
   public getNumChat(token: string): Observable<HttpGetNumChatInterceptor> {
-    const url = `${environment.loginEntrypoint}/getChatsNumbers`;
-    return this.http.get<HttpGetNumChat>(url, { headers: { authorization: token }});
+    const url = `${environment.apiEntrypoint}/getChatsNumbers`;
+    return this.http.get<HttpGetNumChatInterceptor>(url, { headers: { authorization: token }});
   }
 
 // GET NUMBER PAYMENTS DATA
   public getNumPay(token: string): Observable<HttpGetNumPayInterceptor> {
-    const url = `${environment.loginEntrypoint}/getEarningNumber`;
-    return this.http.get<HttpGetNumPay>(url, { headers: { authorization: token }});
+    const url = `${environment.apiEntrypoint}/getEarningNumber`;
+    return this.http.get<HttpGetNumPayInterceptor>(url, { headers: { authorization: token }});
   }
 
 // GET DATA POSTS FOR DASHBOARD
   public getPostsByMaxNumber(data: GetPostsByMaxNumberPrefixInterceptor): Observable<HttpPostInterceptor[]> {
     const { token, max } = data;
-    const url = `${environment.loginEntrypoint}/getPosts/${max}`;
+    const url = `${environment.apiEntrypoint}/getPosts/${max}`;
     return this.http.get<HttpPostInterceptor[]>(url, { headers: { authorization: token }});
   }
 
 // GET NUMBER VISIBLE POSTS
   public getVisiblePostNumber(token: string): Observable<HttpPostInterceptor[]> {
-    const url = `${environment.loginEntrypoint}/getVisiblePostNumber`;
+    const url = `${environment.apiEntrypoint}/getVisiblePostNumber`;
     return this.http.get<HttpPostInterceptor[]>(url, { headers: { authorization: token }});
   }
 
 // GET NUMBER UNVISIBLE POSTS
   public getUnvisiblePostNumber(token: string): Observable<HttpPostInterceptor[]> {
-    const url = `${environment.loginEntrypoint}/getUnvisiblePostNumber`;
-    return this.http.get<HttpPostInterceptor[]>(url,{ headers: { authorization: token }});
+    const url = `${environment.apiEntrypoint}/getUnvisiblePostNumber`;
+    return this.http.get<HttpPostInterceptor[]>(url, { headers: { authorization: token }});
   }
 
 // GET POSTS FOR TABLE
-  public getAllPostsTable(token: string) {
-    const url = `${environment.loginEntrypoint}/getAllPostsTable`;
-    return this.http.get(url,{ headers: { authorization: token }});
+  public getAllPostsTable(token: string): Observable<HttpPostInterceptor> {
+    const url = `${environment.apiEntrypoint}/getAllPostsTable`;
+    return this.http.get<HttpPostInterceptor>(url, { headers: { authorization: token }});
   }
 
 
