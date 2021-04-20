@@ -1,2 +1,4 @@
 <app-aside *ngIf="view"></app-aside>
-<router-outlet></router-outlet>
+<div [ngClass]="{'contentVisible': view}">
+  <router-outlet></router-outlet>
+</div>
