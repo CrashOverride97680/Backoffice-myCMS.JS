@@ -14,4 +14,4 @@ export class NavgroupComponent {
   @Input() titleGroup: string = '';
   @Input() routes: string[] = [''];
   @Input() icons: string[] = [''];
-;}
+}
