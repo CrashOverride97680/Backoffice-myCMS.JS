@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-col',
-  template:`
+  template: `
     <div
       [ngClass]="
         {
@@ -29,6 +29,6 @@ import {Component, Input} from '@angular/core';
 })
 export class ColComponent  {
   @Input() type: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 = 12;
-  @Input() class: string = '';
-  @Input() style: Object = {};
+  @Input() class = '';
+  @Input() style = {};
 }
