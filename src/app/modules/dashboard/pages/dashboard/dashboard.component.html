@@ -1,82 +1,16 @@
-<div class="screen-correct jumbotron m-0">
-  <div class="container">
+<div class="screen-correct bg-light m-0">
+  <div class="container pt-4">
     <h1 class="h3 mb-4 font-weight-normal text-gray-800">Dashboard</h1>
-    <div class="row">
-      <div class="col mr-2" *ngIf="postsCards === true">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title h6 text-primary font-weight-lighter text-uppercase">Posts</h2>
-            <p class="card-text h5 mb-0 font-weight-bold text-gray-800">{{ postsData }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col mr-2" *ngIf="mailsubCards === true">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title h6 text-success font-weight-lighter text-uppercase">Mail subscribe</h2>
-            <p class="card-text h5 mb-0 font-weight-bold text-gray-800">{{ mailsubData }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col mr-2" *ngIf="chatCards === true">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title h6 text-info font-weight-lighter text-uppercase">Chat users</h2>
-            <p class="card-text h5 mb-0 font-weight-bold text-gray-800">{{ chatData }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col mr-2" *ngIf="paymentsCards === true">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title h6 text-warning font-weight-lighter text-uppercase">Payments</h2>
-            <p class="card-text h5 mb-0 font-weight-bold text-gray-800">$ {{ paymentsData }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <app-row>
+      <app-card [ngClass]="'col-3'" [content]="numPosts.toString()" [title]="'Posts'" [titleClass]="'text-primary'"></app-card>
+      <app-card [ngClass]="'col-3'" *ngIf="numMail > 0" [content]="numMail.toString()" [title]="'Mail subscribe'" [titleClass]="'text-success'"></app-card>
+      <app-card [ngClass]="'col-3'" *ngIf="numChat > 0" [content]="numChat.toString()" [title]="'Chat users'" [titleClass]="'text-info'"></app-card>
+      <app-card [ngClass]="'col-3'" *ngIf="numPay > 0" [content]="'$ ' + numChat.toString()" [title]="'Payments'" [titleClass]="'text-info'"></app-card>
+    </app-row>
 
-    <div class="row pt-5">
-      <div class="col-12">
-        <div class="card">
-          <h2 class="card-header h5 text-uppercase font-weight-bold text-primary">Latest posts written</h2>
-          <div class="card-body">
-            <table class="table table-striped">
-              <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col" class="text-uppercase">Title</th>
-                <th scope="col" class="text-uppercase">Type</th>
-                <th scope="col" class="text-uppercase">Visible</th>
-                <th scope="col" class="text-uppercase">dd/mm/yyyy</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let post of posts; index as i">
-                <th scope="row">
-                  {{ i + 1 }}
-                </th>
-                <td>
-                  {{ post.title }}
-                </td>
-                <td>
-                  {{ post.type }}
-                </td>
-                <td *ngIf="post.visible === true">
-                  <fa-icon icon="check-circle"></fa-icon>
-                </td>
-                <td *ngIf="post.visible === false">
-                  <fa-icon icon="times-circle"></fa-icon>
-                </td>
-                <td>
-                  {{ post.updated | date: 'dd/MM/yyyy' }}
-                </td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+    <app-row>
+      <app-card-table [posts]="posts"></app-card-table>
+    </app-row>
   </div>
 </div>
+<app-spinner [view]="view"></app-spinner>
