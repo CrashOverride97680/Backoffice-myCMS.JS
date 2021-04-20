@@ -1,1 +1,16 @@
-<p>dashboard works!</p>
+<div class="screen-correct bg-light m-0">
+  <div class="container pt-4">
+    <h1 class="h3 mb-4 font-weight-normal text-gray-800">Dashboard</h1>
+    <app-row>
+      <app-card [ngClass]="'col-3'" [content]="numPosts.toString()" [title]="'Posts'" [titleClass]="'text-primary'"></app-card>
+      <app-card [ngClass]="'col-3'" *ngIf="numMail > 0" [content]="numMail.toString()" [title]="'Mail subscribe'" [titleClass]="'text-success'"></app-card>
+      <app-card [ngClass]="'col-3'" *ngIf="numChat > 0" [content]="numChat.toString()" [title]="'Chat users'" [titleClass]="'text-info'"></app-card>
+      <app-card [ngClass]="'col-3'" *ngIf="numPay > 0" [content]="'$ ' + numChat.toString()" [title]="'Payments'" [titleClass]="'text-info'"></app-card>
+    </app-row>
+
+    <app-row>
+      <app-card-table [posts]="posts"></app-card-table>
+    </app-row>
+  </div>
+</div>
+<app-spinner [view]="view"></app-spinner>

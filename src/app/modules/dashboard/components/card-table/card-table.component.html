@@ -1,0 +1,38 @@
+<div class="card mt-5">
+  <h2 class="card-header h5 text-uppercase font-weight-bold text-primary">Latest posts written</h2>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" class="text-uppercase">Title</th>
+        <th scope="col" class="text-uppercase">Type</th>
+        <th scope="col" class="text-uppercase">Visible</th>
+        <th scope="col" class="text-uppercase">dd/mm/yyyy</th>
+      </tr>
+      </thead>
+      <tbody class="table-hover">
+      <tr *ngFor="let post of posts; index as i">
+        <th scope="row">
+          {{ i + 1 }}
+        </th>
+        <td>
+          {{ post.title }}
+        </td>
+        <td>
+          {{ post.type }}
+        </td>
+        <td *ngIf="post.visible === true">
+          <i class="fas fa-check-circle"></i>
+        </td>
+        <td *ngIf="post.visible === false">
+          <i class="fas fa-times-circle"></i>
+        </td>
+        <td>
+          {{ post.updated | date: 'dd/MM/yyyy' }}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
