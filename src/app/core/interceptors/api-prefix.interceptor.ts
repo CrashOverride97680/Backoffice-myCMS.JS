@@ -3,7 +3,7 @@ export interface LoginPrefixInterceptor {
   password: string;
 }
 
-export interface GetPostsByMaxNumberPrefixInterceptor (
+export interface GetPostsByMaxNumberPrefixInterceptor {
   token: string;
   max: number;
 }
