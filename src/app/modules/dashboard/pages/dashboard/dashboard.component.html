@@ -1,6 +1,6 @@
 <div class="screen-correct bg-light m-0">
   <div class="container pt-4">
-    <h1 class="h3 mb-4 font-weight-normal text-gray-800">Dashboard</h1>
+    <h1 class="h3 mb-4 font-weight-normal text-gray-800 text-capitalize">Dashboard</h1>
     <app-row>
       <app-card [ngClass]="'col-3'" [content]="numPosts.toString()" [title]="'Posts'" [titleClass]="'text-primary'"></app-card>
       <app-card [ngClass]="'col-3'" *ngIf="numMail > 0" [content]="numMail.toString()" [title]="'Mail subscribe'" [titleClass]="'text-success'"></app-card>
