@@ -7,7 +7,6 @@ import { SharedModule } from '../../shared/shared.module';
 import { CardComponent } from './components/card/card.component';
 import { CardTableComponent } from './components/card-table/card-table.component';
 
-
 @NgModule({
   declarations: [
     DashboardComponent,
