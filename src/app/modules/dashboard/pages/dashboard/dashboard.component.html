@@ -1,6 +1,6 @@
 <div class="screen-correct bg-light m-0">
   <div class="container pt-4">
-    <app-title-pages>Dashboard</app-title-pages>
+    <pages-title>Dashboard</pages-title>
     <app-row>
       <app-card [ngClass]="'col-3'" [content]="numPosts.toString()" [title]="'Posts'" [titleClass]="'text-primary'"></app-card>
       <app-card [ngClass]="'col-3'" *ngIf="numMail > 0" [content]="numMail.toString()" [title]="'Mail subscribe'" [titleClass]="'text-success'"></app-card>
