@@ -1,5 +1,28 @@
 <div class="screen-correct bg-light m-0">
   <div class="container pt-4">
-    <app-title-pages>Posts pubblicated</app-title-pages>
+    <pages-title>Posts pubblicated</pages-title>
+    <app-row>
+      <div class="col-4 mr2">
+        <app-cards [title]="'Total'" [titleClass]="'text-primary'">
+          0
+        </app-cards>
+      </div>
+      <div class="col-4 mr2">
+        <app-cards [title]="'Visible'" [titleClass]="'text-success'">
+          0
+        </app-cards>
+      </div>
+      <div class="col-4 mr2">
+        <app-cards [title]="'Unvisible'" [titleClass]="'text-info'">
+          0
+        </app-cards>
+      </div>
+    </app-row>
+    <app-row>
+      <div class="col-12 mt-5">
+        <pages-table [title]="'Posts'" [settings]="settings"></pages-table>
+      </div>
+    </app-row>
   </div>
 </div>
+<app-spinner [view]="false"></app-spinner>
