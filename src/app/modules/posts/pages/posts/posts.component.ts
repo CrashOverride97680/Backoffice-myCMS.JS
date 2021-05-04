@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { SettingsPrefixInterceptor } from '../../../../core/interceptors/ui-prefix.interceptor';
+import { HttpService } from '../../../../core/http/http.service';
+import { HttpPostInterceptor } from '../../../../core/interceptors/http.interceptor';
+import { forkJoin } from 'rxjs';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -41,4 +44,26 @@ export class PostsComponent {
       }
     }
   };
+  public total = 0;
+  public visible = 0;
+  public unvisible = 0;
+  public source: HttpPostInterceptor[] = [];
+  public view = true;
+  constructor(
+    private api: HttpService
+  ) {
+    const token: string = localStorage.getItem('token') || '';
+    forkJoin([
+      this.api.getNumPosts(token),
+      this.api.getVisiblePostNumber(token),
+      this.api.getUnvisiblePostNumber(token),
+      this.api.getAllPostsTable(token)
+    ]).subscribe(res => {
+      this.total = res[0].count;
+      this.visible = res[1].count;
+      this.unvisible = res[2].count;
+      this.source = res[3];
+      this.view = false;
+    });
+  }
 }
