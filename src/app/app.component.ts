@@ -7,7 +7,7 @@ import { AsideService } from './core/static/components/aside/services/aside.serv
 })
 export class AppComponent {
   title = 'CMS';
-  public view: boolean = false;
+  public view = false;
   constructor(
     private asideData: AsideService
   ) {

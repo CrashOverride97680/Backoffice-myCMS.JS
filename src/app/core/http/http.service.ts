@@ -9,7 +9,7 @@ import {
   HttpGetPostsNumbersInterceptor,
   HttpLogoutInterceptor,
   HttpPostInterceptor,
-  HttpInterceptor
+  HttpInterceptor, HttpGetPostsVisibleNumberInterceptor, HttpGetPostsUnvisibleNumberInterceptor
 } from '../interceptors/http.interceptor';
 import {
   LoginPrefixInterceptor,
@@ -69,21 +69,21 @@ export class HttpService {
   }
 
 // GET NUMBER VISIBLE POSTS
-  public getVisiblePostNumber(token: string): Observable<HttpPostInterceptor[]> {
+  public getVisiblePostNumber(token: string): Observable<HttpGetPostsVisibleNumberInterceptor> {
     const url = `${environment.apiEntrypoint}/getVisiblePostNumber`;
-    return this.http.get<HttpPostInterceptor[]>(url, { headers: { authorization: token }});
+    return this.http.get<HttpGetPostsVisibleNumberInterceptor>(url, { headers: { authorization: token }});
   }
 
 // GET NUMBER UNVISIBLE POSTS
-  public getUnvisiblePostNumber(token: string): Observable<HttpPostInterceptor[]> {
+  public getUnvisiblePostNumber(token: string): Observable<HttpGetPostsUnvisibleNumberInterceptor> {
     const url = `${environment.apiEntrypoint}/getUnvisiblePostNumber`;
-    return this.http.get<HttpPostInterceptor[]>(url, { headers: { authorization: token }});
+    return this.http.get<HttpGetPostsUnvisibleNumberInterceptor>(url, { headers: { authorization: token }});
   }
 
 // GET POSTS FOR TABLE
-  public getAllPostsTable(token: string): Observable<HttpPostInterceptor> {
+  public getAllPostsTable(token: string): Observable<HttpPostInterceptor[]> {
     const url = `${environment.apiEntrypoint}/getAllPostsTable`;
-    return this.http.get<HttpPostInterceptor>(url, { headers: { authorization: token }});
+    return this.http.get<HttpPostInterceptor[]>(url, { headers: { authorization: token }});
   }
 
 

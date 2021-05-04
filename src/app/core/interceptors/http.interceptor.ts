@@ -32,7 +32,7 @@ export interface SeoSemInterfaces {
   geoRegion?: string;
   geoPlacename?: string;
   geoPosition?: string;
-  icbm?: string;
+  icom?: string;
   twitterCard?: string;
   twitterSite?: string;
   twitterCreator?: string;
@@ -51,4 +51,12 @@ export interface HttpPostInterceptor {
   visible: boolean;
   category: string[];
   updated?: string;
+}
+
+export interface HttpGetPostsVisibleNumberInterceptor {
+  count: number;
+}
+
+export interface HttpGetPostsUnvisibleNumberInterceptor {
+  count: number;
 }

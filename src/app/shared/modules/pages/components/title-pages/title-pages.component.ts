@@ -1,12 +1,12 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'app-title-pages',
+  selector: 'pages-title',
   template: `
     <h1 class="h3 mb-4 font-weight-normal text-gray-800 text-capitalize">
       <ng-content></ng-content>
     </h1>
   `,
-  styles: []
+  styles: ['']
 })
 export class TitlePagesComponent {}

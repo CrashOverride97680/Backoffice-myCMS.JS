@@ -1,0 +1,11 @@
+.hoverable-button {
+  border-radius: 50%;
+  transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -webkit-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  &:hover {
+    background-color: #50B5D5;
+  }
+}
