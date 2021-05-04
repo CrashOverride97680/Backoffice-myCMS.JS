@@ -4,17 +4,17 @@
     <app-row>
       <div class="col-4 mr2">
         <app-cards [title]="'Total'" [titleClass]="'text-primary'">
-          0
+          {{total}}
         </app-cards>
       </div>
       <div class="col-4 mr2">
         <app-cards [title]="'Visible'" [titleClass]="'text-success'">
-          0
+          {{visible}}
         </app-cards>
       </div>
       <div class="col-4 mr2">
         <app-cards [title]="'Unvisible'" [titleClass]="'text-info'">
-          0
+          {{unvisible}}
         </app-cards>
       </div>
     </app-row>
@@ -25,4 +25,11 @@
     </app-row>
   </div>
 </div>
-<app-spinner [view]="false"></app-spinner>
+<pages-button-create
+  [router]="[
+    'create'
+  ]"
+>
+  <i class="fas fa-feather text-white p-3 hoverable-button"></i>
+</pages-button-create>
+<app-spinner [view]="view"></app-spinner>
