@@ -3,16 +3,13 @@ import {Component, Input} from '@angular/core';
 @Component({
   selector: 'pages-button-create',
   template: `
-    <div class="btn-adds" [ngClass]="class!">
-      <a [routerLink]="router" class="btn_add_internal">
-        <ng-content></ng-content>
-      </a>
-    </div>
+    <a [routerLink]="router" class="btn_add_internal" [ngClass]="class">
+      <ng-content></ng-content>
+    </a>
   `,
   styleUrls: ['./button-create.component.scss']
 })
 export class ButtonCreateComponent {
   @Input() class = '';
   @Input() router = [''];
-  @Input() title = '';
 }
