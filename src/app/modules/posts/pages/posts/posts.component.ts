@@ -28,24 +28,41 @@ export class PostsComponent {
       },
       visible: {
         title: 'VISIBLE',
-        filter: true,
+        filter: false,
         type: 'html',
-        valuePrepareFunction: (row: boolean) => {
-          return (row
+        valuePrepareFunction: (cell: boolean) => {
+          return (cell
             ? '<i class="fas fa-check-circle"></i>'
             : '<i class="fas fa-times-circle"></i>');
         }
       },
       updated: {
-        title: 'DD/MM/YYYY'
+        title: 'DD/MM/YYYY',
+        filter: false,
+        valuePrepareFunction: (cell: string) => {
+          const date = new Date(cell);
+          const year = date.getFullYear();
+          let month = date.getMonth() + 1;
+          let stringMonth = '';
+          let dt = date.getDate();
+          let stringDT = '';
+          if (dt < 10) {
+            stringDT = '0' + dt;
+          }
+          if (month < 10) {
+            stringMonth = '0' + month;
+          }
+
+          return stringDT + '/' + stringMonth + '/' + year;
+        }
       },
       actions: {
         title: 'ACTIONS',
         type: 'html',
         filter: false,
         sort: false,
-        valuePrepareFunction: (row: SettingsPrefixInterceptor) => {
-          return `<span><a href="/modifyPosts/${row._id}" title="modify ${row.title}" target="_blank">Modify</a> / <a href="/deletePosts/${row._id}" title="delete ${row._id}">Delete</a></span>`
+        valuePrepareFunction: (cell:string, row: SettingsPrefixInterceptor) => {
+          return `<a href="/posts/manage/${row._id}" class="text-white btn btn-primary" target="_blank">Manage</a>`
         }
       }
     }
