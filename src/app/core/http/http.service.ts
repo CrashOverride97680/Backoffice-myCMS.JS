@@ -86,5 +86,10 @@ export class HttpService {
     return this.http.get<HttpPostInterceptor[]>(url, { headers: { authorization: token }});
   }
 
+// GET ALL POSTS
+  public getAllPosts(token: string): Observable<HttpPostInterceptor[]> {
+    const url = `${environment.apiEntrypoint}/getAllPosts`;
+    return this.http.get<HttpPostInterceptor[]>(url, { headers: { authorization: token }});
+  }
 
 }

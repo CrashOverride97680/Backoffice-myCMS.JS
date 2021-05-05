@@ -19,17 +19,23 @@
       </div>
     </app-row>
     <app-row>
-      <div class="col-12 mt-5">
-        <pages-table [title]="'Posts'" [settings]="settings"></pages-table>
+      <div class="mt-5 mb-2">
+        <pages-button-create
+          [class]="'btn btn-primary text-capitalize'"
+          [router]="['create']"
+        >
+          <i class="fas fa-plus"></i>
+          <span class="ms-1">
+            Create posts
+          </span>
+        </pages-button-create>
+      </div>
+    </app-row>
+    <app-row>
+      <div class="col-12 mt-3 mb-5">
+        <pages-table [title]="'Posts'" [settings]="settings" [source]="source"></pages-table>
       </div>
     </app-row>
   </div>
 </div>
-<pages-button-create
-  [router]="[
-    'create'
-  ]"
->
-  <i class="fas fa-feather text-white p-3 hoverable-button"></i>
-</pages-button-create>
 <app-spinner [view]="view"></app-spinner>
