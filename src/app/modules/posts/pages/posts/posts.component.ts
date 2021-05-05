@@ -28,7 +28,13 @@ export class PostsComponent {
       },
       visible: {
         title: 'VISIBLE',
-        filter: false
+        filter: true,
+        type: 'html',
+        valuePrepareFunction: (row: boolean) => {
+          return (row
+            ? '<i class="fas fa-check-circle"></i>'
+            : '<i class="fas fa-times-circle"></i>');
+        }
       },
       updated: {
         title: 'DD/MM/YYYY'
@@ -57,7 +63,7 @@ export class PostsComponent {
       this.api.getNumPosts(token),
       this.api.getVisiblePostNumber(token),
       this.api.getUnvisiblePostNumber(token),
-      this.api.getAllPostsTable(token)
+      this.api.getAllPosts(token)
     ]).subscribe(res => {
       this.total = res[0].count;
       this.visible = res[1].count;
