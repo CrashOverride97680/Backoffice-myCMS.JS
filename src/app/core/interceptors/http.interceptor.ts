@@ -60,3 +60,14 @@ export interface HttpGetPostsVisibleNumberInterceptor {
 export interface HttpGetPostsUnvisibleNumberInterceptor {
   count: number;
 }
+
+export interface HttpGetAllCategory {
+  visible: boolean;
+  _id: string;
+  name: string;
+  description: string;
+  titleSEO: string;
+  important: string;
+  subCategory: [];
+  updated: string
+}
