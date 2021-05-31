@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from '@angular/common';
-
 import { PostsRoutingModule } from './posts-routing.module';
 import { PostsComponent } from './pages/posts/posts.component';
 import { SharedModule } from '../../shared/shared.module';
 import { CreateComponent } from './pages/create/create.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import { EditorComponent } from './components/editor/editor.component';
 import { GeninfoComponent } from './components/geninfo/geninfo.component';
 import { CategoryComponent } from './components/category/category.component';
 import { TypeComponent } from './components/type/type.component';
@@ -19,7 +18,6 @@ import { SendbuttonComponent } from './components/sendbutton/sendbutton.componen
   declarations: [
     PostsComponent,
     CreateComponent,
-    EditorComponent,
     GeninfoComponent,
     CategoryComponent,
     TypeComponent,
@@ -32,7 +30,9 @@ import { SendbuttonComponent } from './components/sendbutton/sendbutton.componen
     CommonModule,
     PostsRoutingModule,
     SharedModule,
-    AngularEditorModule
+    AngularEditorModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class PostsModule { }
