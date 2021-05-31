@@ -1,3 +1,64 @@
-<div class="card-body">
-  <angular-editor name="htmlContent"></angular-editor>
+<script src="../../../../shared/components/warning/warning.component.ts"></script>
+<div class="screen-correct bg-light m-0">
+
+  <form class="container pt-4" [formGroup]="post" (ngSubmit)="send()">
+    <app-alert *ngIf="problemAPI">
+      Connection problem with the server, the data could be lost, if the problem persists contact the system administrator!!
+    </app-alert>
+
+    <app-warning>
+      If you do not create categories, the form will never be valid so please create the category first at this <a routerLink="/categories/create" title="Create category">link</a> .
+    </app-warning>
+
+    <pages-title>Create post</pages-title>
+    <div class="alert alert-dark" role="alert">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a></li>
+          <li class="breadcrumb-item"><a routerLink="/posts">Posts</a></li>
+          <li class="breadcrumb-item active text-capitalize" aria-current="page">Create posts</li>
+        </ol>
+      </nav>
+    </div>
+    <app-row>
+      <div class="col-7">
+        <pages-box
+          [title]="'Post content'"
+        >
+          <angular-editor  name="htmlContent" [config]="editorConfig" formControlName="editor" required></angular-editor>
+        </pages-box>
+      </div>
+
+      <div class="col-5">
+        <app-card-simple
+          [title]="'General information'"
+          [titleClass]="'h5 text-uppercase font-weight-bold text-primary'"
+        >
+          <app-geninfo formControlName="geninfo"></app-geninfo>
+          <app-category formControlName="category"></app-category>
+          <app-type></app-type>
+          <app-title></app-title>
+        </app-card-simple>
+
+        <!--<app-card-simple
+          [title]="'Seo'"
+          [titleClass]="'h5 text-uppercase font-weight-bold text-primary'"
+          [cardClass]="'mt-3'"
+        >
+          <app-description></app-description>
+        </app-card-simple>
+
+        <app-card-simple
+          [title]="'General Setting Post'"
+          [titleClass]="'h5 text-uppercase font-weight-bold text-primary'"
+          [cardClass]="'mt-3 mb-3'"
+        >
+          <app-important></app-important>
+
+          <app-sendbutton></app-sendbutton>
+        </app-card-simple>-->
+      </div>
+      <app-sendbutton></app-sendbutton>
+    </app-row>
+  </form>
 </div>

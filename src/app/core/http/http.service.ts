@@ -9,7 +9,7 @@ import {
   HttpGetPostsNumbersInterceptor,
   HttpLogoutInterceptor,
   HttpPostInterceptor,
-  HttpInterceptor, HttpGetPostsVisibleNumberInterceptor, HttpGetPostsUnvisibleNumberInterceptor
+  HttpInterceptor, HttpGetPostsVisibleNumberInterceptor, HttpGetPostsUnvisibleNumberInterceptor, HttpGetAllCategory
 } from '../interceptors/http.interceptor';
 import {
   LoginPrefixInterceptor,
@@ -90,6 +90,12 @@ export class HttpService {
   public getAllPosts(token: string): Observable<HttpPostInterceptor[]> {
     const url = `${environment.apiEntrypoint}/getAllPosts`;
     return this.http.get<HttpPostInterceptor[]>(url, { headers: { authorization: token }});
+  }
+
+// Get ALL CATEGORY
+  public getAllCategory(token: string): Observable<HttpGetAllCategory[]> {
+    const url = `${environment.apiEntrypoint}/getAllCategory`;
+    return this.http.get<HttpGetAllCategory[]>(url, { headers: { authorization: token } });
   }
 
 }

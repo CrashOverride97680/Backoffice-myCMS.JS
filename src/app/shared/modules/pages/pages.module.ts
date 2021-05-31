@@ -6,13 +6,15 @@ import { TablePagesComponent } from './components/table/tablepages.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ButtonCreateComponent } from './components/button-create/button-create.component';
 import { RouterModule } from '@angular/router';
+import { PagesBoxComponent } from './components/pages-box/pages-box.component';
 
 @NgModule({
   declarations: [
     TitlePagesComponent,
     CardsPagesComponent,
     TablePagesComponent,
-    ButtonCreateComponent
+    ButtonCreateComponent,
+    PagesBoxComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { RouterModule } from '@angular/router';
     TitlePagesComponent,
     CardsPagesComponent,
     TablePagesComponent,
-    ButtonCreateComponent
+    ButtonCreateComponent,
+    PagesBoxComponent
   ]
 })
 export class PagesModule { }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiEntrypoint: 'Insert URL CMS entrypoint'
+  apiEntrypoint: 'http://localhost/api'
 };
 
 /*
