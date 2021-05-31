@@ -1,6 +1,6 @@
 <div class="mt-1 form-group">
     <label for="lang">Lang *</label>
-    <select aria-label="Select language website..." id="lang" ngModel name="lang" class="d-block mt-2 w-100 p-2" required>
+    <select [(ngModel)]="lang" (change)="change($event)" aria-label="Select language website..." id="lang" ngModel name="lang" class="d-block mt-2 w-100 p-2" required>
       <option value="-">Select lang website...</option>
       <option value="ab">Abkhazian</option>
       <option value="aa">Afar</option>
