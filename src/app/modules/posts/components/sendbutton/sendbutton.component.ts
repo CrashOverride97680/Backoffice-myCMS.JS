@@ -10,6 +10,6 @@ import { Component } from '@angular/core';
       </button>
     </div>
   `,
-  styleUrls: ['./sendbutton.component.scss']
+  styles: ['']
 })
 export class SendbuttonComponent { }
