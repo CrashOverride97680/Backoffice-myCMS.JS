@@ -1,0 +1,55 @@
+<form #createForm="ngForm" class="w-100" (ngSubmit)="send(createForm)">
+  <app-alert *ngIf="problemAPI == true">
+    Connection problem with the server, the data could be lost, if the problem persists contact the system administrator!!
+  </app-alert>
+
+  <app-success *ngIf="successAPI == true">
+    <i class="fas fa-check-circle"></i> category created correctly.
+  </app-success>
+
+  <div class="alert alert-dark" role="alert">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb m-0">
+        <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a routerLink="/categories">Categories</a></li>
+        <li class="breadcrumb-item active text-capitalize" aria-current="page">Create category</li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="mt-2 form-group">
+    <label for="title">Name *</label>
+    <input type="text" class="form-control mt-2 p-2" aria-describedby="inputGroup-sizing-sm" id="name" placeholder="Write name category..." ngModel name="name" ngModel title="Erite name category..." required>
+  </div>
+
+  <div class="mt-2 form-group">
+    <label for="title">Title Seo *</label>
+    <input type="text" class="form-control mt-2 p-2" aria-describedby="inputGroup-sizing-sm" id="name" placeholder="Write title important for Seo..." ngModel name="titleSeo" ngModel title="Write title important for Seo..." required>
+  </div>
+
+  <div class="mt-2 form-group">
+    <label for="important">Important *</label>
+    <input type="number" class="form-control mt-2 p-2" [(ngModel)]="number" min="0" max="999" name="important" ngModel required>
+  </div>
+
+  <div class="mt-2 form-group">
+    <label for="description">Description *</label>
+    <textarea style="min-height: 200px"  class="d-block w-100 mt-2 form-control" placeholder="Write description categoryes..." title="Write description categoryes..." name="description" ngModel required></textarea>
+  </div>
+
+  <div class="mt-2 form-group form-check">
+    <input class="form-check-input" [(ngModel)]="checkbox" type="checkbox" id="visible" name="visible" ngModel>
+    <label class="form-check-label" for="flexCheckDefault">
+      Visible
+    </label>
+  </div>
+
+  <div class="form-group mt-2">
+    <button type="submit" class="btn btn-primary"[disabled]="createForm.invalid">
+      <i class="fas fa-plus"></i>
+      Create new
+    </button>
+  </div>
+</form>
+
+

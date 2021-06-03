@@ -13,7 +13,6 @@ import { AsideModule } from './core/static/components/aside/aside.module';
     AppRoutingModule,
     HttpClientModule,
     AsideModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]

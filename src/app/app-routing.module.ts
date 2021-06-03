@@ -12,6 +12,9 @@ const routes: Routes = [
     path: 'posts', loadChildren: () => import('./modules/posts/posts.module').then(m => m.PostsModule)
   },
   {
+    path: 'categories', loadChildren: () => import('./modules/categories/categories.module').then(m => m.CategoriesModule)
+  },
+  {
     path: '**', redirectTo: ''
   }
 ];

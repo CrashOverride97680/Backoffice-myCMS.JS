@@ -1,3 +1,8 @@
+export interface HttpStatusReturnedInterceptor {
+  number: string;
+  message: string;
+}
+
 export interface HttpInterceptor {
   token: string;
 }
@@ -69,5 +74,9 @@ export interface HttpGetAllCategory {
   titleSEO: string;
   important: string;
   subCategory: [];
-  updated: string
+  updated: string;
+}
+
+export interface HttpGetAllNumberCategory {
+  count: number;
 }

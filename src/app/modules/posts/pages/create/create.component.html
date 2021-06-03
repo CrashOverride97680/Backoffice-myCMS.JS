@@ -25,7 +25,7 @@
         <pages-box
           [title]="'Post content'"
         >
-          <angular-editor  name="htmlContent" [config]="editorConfig" formControlName="editor" required></angular-editor>
+          <angular-editor [config]="editorConfig" formControlName="content"></angular-editor>
         </pages-box>
       </div>
 
@@ -34,18 +34,19 @@
           [title]="'General information'"
           [titleClass]="'h5 text-uppercase font-weight-bold text-primary'"
         >
-          <app-geninfo formControlName="geninfo"></app-geninfo>
+          <app-geninfo formControlName="lang"></app-geninfo>
           <app-category formControlName="category"></app-category>
-          <app-type></app-type>
-          <app-title></app-title>
+          <app-type formControlName="type"></app-type>
+          <app-title formControlName="title"></app-title>
         </app-card-simple>
 
-        <!--<app-card-simple
+        <app-card-simple
           [title]="'Seo'"
           [titleClass]="'h5 text-uppercase font-weight-bold text-primary'"
           [cardClass]="'mt-3'"
+          formGroupName="seo"
         >
-          <app-description></app-description>
+          <app-description formControlName="description"></app-description>
         </app-card-simple>
 
         <app-card-simple
@@ -55,10 +56,9 @@
         >
           <app-important></app-important>
 
-          <app-sendbutton></app-sendbutton>
-        </app-card-simple>-->
+          <app-sendbutton [disabled]="post.invalid"></app-sendbutton>
+        </app-card-simple>
       </div>
-      <app-sendbutton></app-sendbutton>
     </app-row>
   </form>
 </div>

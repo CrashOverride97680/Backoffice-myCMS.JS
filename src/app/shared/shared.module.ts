@@ -9,6 +9,7 @@ import { PagesModule } from './modules/pages/pages.module';
 import { CardSimpleComponent } from './components/card-simple/card-simple.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { WarningComponent } from './components/warning/warning.component';
+import { SuccessComponent } from './components/success/success.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { WarningComponent } from './components/warning/warning.component';
     SpinnerComponent,
     CardSimpleComponent,
     AlertComponent,
-    WarningComponent
+    WarningComponent,
+    SuccessComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { WarningComponent } from './components/warning/warning.component';
     PagesModule,
     CardSimpleComponent,
     AlertComponent,
-    WarningComponent
+    WarningComponent,
+    SuccessComponent
   ]
 })
 export class SharedModule { }

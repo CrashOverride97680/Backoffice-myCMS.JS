@@ -1,0 +1,41 @@
+<div class="screen-correct bg-light m-0">
+  <div class="container pt-4">
+    <pages-title>Categories pubblicated</pages-title>
+    <app-row>
+      <div class="col-4 mr2">
+        <app-cards [title]="'Total'" [titleClass]="'text-primary'">
+          {{total}}
+        </app-cards>
+      </div>
+      <div class="col-4 mr2">
+        <app-cards [title]="'Visible'" [titleClass]="'text-success'">
+          {{visible}}
+        </app-cards>
+      </div>
+      <div class="col-4 mr2">
+        <app-cards [title]="'Unvisible'" [titleClass]="'text-info'">
+          {{unvisible}}
+        </app-cards>
+      </div>
+    </app-row>
+    <app-row>
+      <div class="mt-5 mb-2">
+        <pages-button-create
+          [class]="'btn btn-primary text-capitalize'"
+          [router]="['create']"
+        >
+          <i class="fas fa-plus"></i>
+          <span class="ms-1">
+            Create category
+          </span>
+        </pages-button-create>
+      </div>
+    </app-row>
+    <app-row>
+      <div class="col-12 mt-3 mb-5">
+        <pages-table [title]="'Categories'" [settings]="settings" [source]="source"></pages-table>
+      </div>
+    </app-row>
+  </div>
+</div>
+<app-spinner [view]="view"></app-spinner>

@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {path: '', component: PostsComponent, canActivate: [AdminGuard] },
+      { path: '', component: PostsComponent, canActivate: [AdminGuard] },
       { path: 'create', component: CreateComponent, canActivate: [AdminGuard] }
     ]
   }
