@@ -13,11 +13,17 @@ import {
   HttpGetPostsVisibleNumberInterceptor,
   HttpGetPostsUnvisibleNumberInterceptor,
   HttpGetAllCategory,
-  HttpStatusReturnedInterceptor, HttpGetAllNumberCategory
+  HttpStatusReturnedInterceptor,
+  HttpGetAllNumberCategory,
+  HttpPost,
+  HttpGetNumberImage,
+  HttpListImage
 } from '../interceptors/http.interceptor';
 import {
   LoginPrefixInterceptor,
-  GetPostsByMaxNumberPrefixInterceptor, CreateCategoryPrefixInterceptor, ModifyCategoryPrefixInterceptor
+  GetPostsByMaxNumberPrefixInterceptor,
+  CreateCategoryPrefixInterceptor,
+  ModifyCategoryPrefixInterceptor
 } from '../interceptors/api-prefix.interceptor';
 @Injectable({
   providedIn: 'root'
@@ -136,6 +142,31 @@ export class HttpService {
   public getAllVisibleNumberCategory(token: string): Observable<HttpGetAllNumberCategory> {
     const url = `${environment.apiEntrypoint}/getVisibleCategory`;
     return this.http.get<HttpGetAllNumberCategory>(url, { headers: { authorization: token } });
+  }
+
+  public createPost(token: string, data: HttpPost): Observable<HttpStatusReturnedInterceptor> {
+    const url = `${environment.apiEntrypoint}/createpost`;
+    return this.http.post<HttpStatusReturnedInterceptor>(url, data, { headers: { authorization: token }});
+  }
+
+  public getSinglePost(token: string, code: string): Observable<HttpPost> {
+    const url = `${environment.apiEntrypoint}/getSinglePost`;
+    return this.http.post<HttpPost>(url, { code }, { headers: { authorization: token }});
+  }
+
+  public modifyPost(token: string, data: HttpPost): Observable<HttpStatusReturnedInterceptor[]> {
+    const url = `${environment.apiEntrypoint}/modifyPosts`;
+    return this.http.put<HttpStatusReturnedInterceptor[]>(url, data, { headers: { authorization: token }});
+  }
+
+  public getListImagesUploaded(token: string): Observable<HttpGetNumberImage> {
+    const url = `${environment.apiEntrypoint}/getNumberTotalImage`;
+    return this.http.get<HttpGetNumberImage>(url, { headers: { authorization: token } });
+  }
+
+  public getAllImages(token: string): Observable<HttpListImage[]> {
+    const url = `${environment.apiEntrypoint}/getListImagesUploaded`;
+    return this.http.get<HttpListImage[]>(url, { headers: { authorization: token } });
   }
 
 }

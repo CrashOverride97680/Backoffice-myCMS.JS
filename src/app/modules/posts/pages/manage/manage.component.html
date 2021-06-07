@@ -5,7 +5,7 @@
       Connection problem with the server, the data could be lost, if the problem persists contact the system administrator!!
     </app-alert>
 
-    <app-success *ngIf="successAPI == true">
+    <app-success *ngIf="successAPI">
       <i class="fas fa-check-circle"></i> Post created correctly.
     </app-success>
 
@@ -13,13 +13,13 @@
       If you do not create categories, the form will never be valid so please create the category first at this <a routerLink="/categories/create" title="Create category">link</a> .
     </app-warning>
 
-    <pages-title>Create post</pages-title>
+    <pages-title>Manage post</pages-title>
     <div class="alert alert-dark" role="alert">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb m-0">
           <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a></li>
           <li class="breadcrumb-item"><a routerLink="/posts">Posts</a></li>
-          <li class="breadcrumb-item active text-capitalize" aria-current="page">Create posts</li>
+          <li class="breadcrumb-item active text-capitalize" aria-current="page">Manage post</li>
         </ol>
       </nav>
     </div>
@@ -39,7 +39,7 @@
         >
           <app-geninfo formControlName="lang"></app-geninfo>
           <div formGroupName="category">
-            <app-category formControlName="codeCategory" (ErrorApi)="warningChange()"></app-category>
+            <app-category formControlName="codeCategory" [category]="category"  (ErrorApi)="warningChange()"></app-category>
           </div>
           <app-type formControlName="type"></app-type>
           <app-title formControlName="title"></app-title>
@@ -59,8 +59,8 @@
           [titleClass]="'h5 text-uppercase font-weight-bold text-primary'"
           [cardClass]="'mt-3 mb-3'"
         >
-          <app-important formControlName="important"></app-important>
-          <app-visibility formControlName="visible"></app-visibility>
+          <app-important formControlName="important" [value]="important"></app-important>
+          <app-visibility formControlName="visible" [value]="checkbox"></app-visibility>
 
           <app-sendbutton [disabled]="post.invalid"></app-sendbutton>
         </app-card-simple>

@@ -1,4 +1,4 @@
-import { Component, forwardRef } from '@angular/core';
+import {Component, forwardRef, Input} from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
 
 @Component({
@@ -6,9 +6,9 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
   template: `
     <div class="mt-1 form-group">
       <label for="important">Important *</label>
-      <select [(ngModel)]="value" aria-label="Select important website page..." class="d-block mt-2 p-2 w-100">
+      <select [(ngModel)]="value" (change)="change($event)" aria-label="Select important website page..." class="d-block mt-2 p-2 w-100">
         <option value="-">Select important website...</option>
-        <option *ngFor='let in of counter(20) ;let i = index'>{{i + 1}}</option>
+        <option *ngFor="let in of counter(20) ;let i = index" [value]="i">{{i + 1}}</option>
       </select>
     </div>
   `,
@@ -22,7 +22,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
   styles: ['']
 })
 export class ImportantComponent implements ControlValueAccessor {
-  public value = '-';
+  @Input() value = '-';
 
   onTouched: () => void;
   onChanged: any = () => {};
@@ -48,7 +48,8 @@ export class ImportantComponent implements ControlValueAccessor {
   }
 
   change($event: Event) {
+    this.value = ($event.target as HTMLSelectElement).value;
+    this.onChanged(this.value);
     this.onTouched();
-    this.onChanged(($event.target as HTMLSelectElement).value);
   }
 }

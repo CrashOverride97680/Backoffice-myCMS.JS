@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, NgForm } from '@angular/forms';
-import { AngularEditorConfig } from '@kolkov/angular-editor';
-import {File} from '@angular/compiler-cli/src/ngtsc/file_system/testing/src/mock_file_system';
+import { HttpService } from '../../../../core/http/http.service';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -9,7 +8,8 @@ import {File} from '@angular/compiler-cli/src/ngtsc/file_system/testing/src/mock
 })
 export class CreateComponent {
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private api: HttpService
   ) {
     this.post = this.fb.group({
       lang: ['-', Validators.compose([Validators.pattern(/[^-]/), Validators.required])],
@@ -19,11 +19,18 @@ export class CreateComponent {
         description: ['', Validators.required]
       }),
       content: ['', Validators.required],
-      category: ['-', Validators.compose([Validators.pattern(/[^-]/), Validators.required])]
+      category: this.fb.group({
+        codeCategory: ['-', Validators.compose([Validators.pattern(/[^-]/), Validators.required])],
+      }),
+      important: ['-', Validators.compose([Validators.pattern(/[^-]/), Validators.required])],
+      visible: [false, Validators.required]
     });
   }
+
   public post: FormGroup;
   public problemAPI = false;
+  public warningAPI = false;
+  public successAPI = false;
 
   public editorConfig: any = {
       editable: true,
@@ -40,7 +47,7 @@ export class CreateComponent {
       defaultParagraphSeparator: 'p',
       defaultFontName: '',
       defaultFontSize: '',
-      upload: function(file: any) {
+      upload(file: any) {
         console.log(file);
       },
       customClasses: [
@@ -78,7 +85,25 @@ export class CreateComponent {
       ]
     };
 
-  send(){
-    console.log('POSTS:', this.post.value);
+  warningChange() {
+    this.warningAPI = true;
+  }
+
+  send () {
+    const token: string = localStorage.getItem('token') || '';
+    this.api.createPost(token, this.post.value)
+      .subscribe(res =>
+      {
+        this.post.reset();
+        this.successAPI = true;
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: 'smooth'
+        });
+        setTimeout(() => {
+          this.successAPI = false;
+        }, 5000);
+      });
   }
 }

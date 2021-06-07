@@ -24,3 +24,19 @@ export interface ModifyCategoryPrefixInterceptor {
   important: number;
   visible: boolean;
 }
+
+export interface Seo {
+  description: string;
+}
+
+export interface HttpPostPrefixInterceptor {
+  _id?: string;
+  lang: string;
+  type: string;
+  title: string;
+  seo?: Seo;
+  content: string;
+  important: number;
+  visible: boolean;
+  category: string;
+}
