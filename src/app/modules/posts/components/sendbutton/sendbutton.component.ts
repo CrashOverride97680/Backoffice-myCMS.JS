@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-sendbutton',
   template: `
     <div class="mt-3">
-      <button type="submit" class="btn btn-primary btn-lg w-100">
+      <button type="submit" [disabled]="disabled" class="btn btn-primary btn-lg w-100">
         <i class="fas fa-feather"></i>
         Write post
       </button>
@@ -12,4 +12,6 @@ import { Component } from '@angular/core';
   `,
   styles: ['']
 })
-export class SendbuttonComponent { }
+export class SendbuttonComponent {
+  @Input() disabled = false;
+}

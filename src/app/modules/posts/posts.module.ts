@@ -13,6 +13,8 @@ import { TitleComponent } from './components/title/title.component';
 import { DescriptionComponent } from './components/description/description.component';
 import { ImportantComponent } from './components/important/important.component';
 import { SendbuttonComponent } from './components/sendbutton/sendbutton.component';
+import { VisibilityComponent } from './components/visibility/visibility.component';
+import { ManageComponent } from './pages/manage/manage.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { SendbuttonComponent } from './components/sendbutton/sendbutton.componen
     TitleComponent,
     DescriptionComponent,
     ImportantComponent,
-    SendbuttonComponent
+    SendbuttonComponent,
+    VisibilityComponent,
+    ManageComponent
   ],
   imports: [
     CommonModule,

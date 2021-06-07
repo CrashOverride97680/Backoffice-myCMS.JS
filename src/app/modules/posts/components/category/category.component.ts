@@ -7,9 +7,9 @@ import { HttpService } from '../../../../core/http/http.service';
   template: `
       <div class="mt-2 form-group">
         <label for="category">Category *</label>
-        <select [(ngModel)]="category" aria-label="Select category website..." id="category" name="category" class="d-block mt-2 w-100 p-2">
+        <select [(ngModel)]="category" (change)="change($event)" aria-label="Select category website..." class="d-block mt-2 w-100 p-2">
           <option value="-">Select category website...</option>
-          <option *ngFor="let categorydata of listCategory">{{categorydata.name}}</option>
+          <option *ngFor="let categorydata of listCategory" [value]="categorydata._id">{{categorydata.name}}</option>
         </select>
       </div>
   `,
@@ -41,7 +41,7 @@ export class CategoryComponent implements ControlValueAccessor{
   @Input() listCategory: HttpGetAllCategory[] = [];
   @Output() ErrorApi: EventEmitter<boolean> = new EventEmitter<boolean>(false);
   onTouched: () => void;
-  public category = '-';
+  @Input() category = '-';
   onChanged: any = () => {};
 
   registerOnTouched(fn: any) {
@@ -54,6 +54,12 @@ export class CategoryComponent implements ControlValueAccessor{
 
   writeValue(category: string) {
     this.category = category;
+  }
+
+  change($event: Event) {
+    this.category = ($event.target as HTMLSelectElement).value;
+    this.onChanged(this.category);
+    this.onTouched();
   }
 
 }

@@ -12,6 +12,21 @@ const routes: Routes = [
     path: 'posts', loadChildren: () => import('./modules/posts/posts.module').then(m => m.PostsModule)
   },
   {
+    path: 'categories', loadChildren: () => import('./modules/categories/categories.module').then(m => m.CategoriesModule)
+  },
+  {
+    path: 'images', loadChildren: () => import('./modules/images/images.module').then(m => m.ImagesModule)
+  },
+  {
+    path: 'videos', loadChildren: ()=> import('./modules/videos/videos.module').then(m => m.VideosModule)
+  },
+  {
+    path: 'generals', loadChildren: () => import('./modules/settings/settings.module').then(m => m.SettingsModule)
+  },
+  {
+    path: 'users', loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule)
+  },
+  {
     path: '**', redirectTo: ''
   }
 ];

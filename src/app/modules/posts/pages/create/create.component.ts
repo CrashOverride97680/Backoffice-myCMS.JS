@@ -1,29 +1,38 @@
 import { Component } from '@angular/core';
-import {FormBuilder, Validators, FormGroup, NgForm} from "@angular/forms";
-import { AngularEditorConfig } from "@kolkov/angular-editor";
+import { FormBuilder, Validators, FormGroup, NgForm } from '@angular/forms';
+import { HttpService } from '../../../../core/http/http.service';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent {
-  public post: FormGroup;
-  public problemAPI: boolean = false;
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private api: HttpService
   ) {
     this.post = this.fb.group({
-      editor: ['', Validators.required],
-      geninfo: ['-', Validators.compose([Validators.pattern(/[^-]/), Validators.required])],
-      category: ['-', Validators.compose([Validators.pattern(/[^-]/), Validators.required])]
+      lang: ['-', Validators.compose([Validators.pattern(/[^-]/), Validators.required])],
+      type: ['-', Validators.compose([Validators.pattern(/[^-]/), Validators.required])],
+      title: ['', Validators.required],
+      seo: this.fb.group({
+        description: ['', Validators.required]
+      }),
+      content: ['', Validators.required],
+      category: this.fb.group({
+        codeCategory: ['-', Validators.compose([Validators.pattern(/[^-]/), Validators.required])],
+      }),
+      important: ['-', Validators.compose([Validators.pattern(/[^-]/), Validators.required])],
+      visible: [false, Validators.required]
     });
   }
 
-  send(){
-    console.log("POSTS:", this.post.value);
-  }
+  public post: FormGroup;
+  public problemAPI = false;
+  public warningAPI = false;
+  public successAPI = false;
 
-  public editorConfig: AngularEditorConfig = {
+  public editorConfig: any = {
       editable: true,
       spellcheck: true,
       height: 'auto',
@@ -38,6 +47,9 @@ export class CreateComponent {
       defaultParagraphSeparator: 'p',
       defaultFontName: '',
       defaultFontSize: '',
+      upload(file: any) {
+        console.log(file);
+      },
       customClasses: [
         {
           name: 'quote',
@@ -53,8 +65,8 @@ export class CreateComponent {
           tag: 'h1',
         },
       ],
-      uploadUrl: 'v1/image',
-      uploadWithCredentials: false,
+      uploadUrl: 'http://localhost/api/imgUrl',
+      uploadWithCredentials: true,
       sanitize: true,
       toolbarPosition: 'top',
       toolbarHiddenButtons: [
@@ -72,4 +84,26 @@ export class CreateComponent {
         ]
       ]
     };
+
+  warningChange() {
+    this.warningAPI = true;
+  }
+
+  send () {
+    const token: string = localStorage.getItem('token') || '';
+    this.api.createPost(token, this.post.value)
+      .subscribe(res =>
+      {
+        this.post.reset();
+        this.successAPI = true;
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: 'smooth'
+        });
+        setTimeout(() => {
+          this.successAPI = false;
+        }, 5000);
+      });
+  }
 }

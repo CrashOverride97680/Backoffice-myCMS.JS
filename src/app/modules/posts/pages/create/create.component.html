@@ -1,4 +1,3 @@
-<script src="../../../../shared/components/warning/warning.component.ts"></script>
 <div class="screen-correct bg-light m-0">
 
   <form class="container pt-4" [formGroup]="post" (ngSubmit)="send()">
@@ -6,7 +5,11 @@
       Connection problem with the server, the data could be lost, if the problem persists contact the system administrator!!
     </app-alert>
 
-    <app-warning>
+    <app-success *ngIf="successAPI == true">
+      <i class="fas fa-check-circle"></i> Post created correctly.
+    </app-success>
+
+    <app-warning *ngIf="warningAPI">
       If you do not create categories, the form will never be valid so please create the category first at this <a routerLink="/categories/create" title="Create category">link</a> .
     </app-warning>
 
@@ -25,7 +28,7 @@
         <pages-box
           [title]="'Post content'"
         >
-          <angular-editor  name="htmlContent" [config]="editorConfig" formControlName="editor" required></angular-editor>
+          <angular-editor [config]="editorConfig" formControlName="content"></angular-editor>
         </pages-box>
       </div>
 
@@ -34,18 +37,21 @@
           [title]="'General information'"
           [titleClass]="'h5 text-uppercase font-weight-bold text-primary'"
         >
-          <app-geninfo formControlName="geninfo"></app-geninfo>
-          <app-category formControlName="category"></app-category>
-          <app-type></app-type>
-          <app-title></app-title>
+          <app-geninfo formControlName="lang"></app-geninfo>
+          <div formGroupName="category">
+            <app-category formControlName="codeCategory" (ErrorApi)="warningChange()"></app-category>
+          </div>
+          <app-type formControlName="type"></app-type>
+          <app-title formControlName="title"></app-title>
         </app-card-simple>
 
-        <!--<app-card-simple
+        <app-card-simple
           [title]="'Seo'"
           [titleClass]="'h5 text-uppercase font-weight-bold text-primary'"
           [cardClass]="'mt-3'"
+          formGroupName="seo"
         >
-          <app-description></app-description>
+          <app-description formControlName="description"></app-description>
         </app-card-simple>
 
         <app-card-simple
@@ -53,12 +59,12 @@
           [titleClass]="'h5 text-uppercase font-weight-bold text-primary'"
           [cardClass]="'mt-3 mb-3'"
         >
-          <app-important></app-important>
+          <app-important formControlName="important"></app-important>
+          <app-visibility formControlName="visible"></app-visibility>
 
-          <app-sendbutton></app-sendbutton>
-        </app-card-simple>-->
+          <app-sendbutton [disabled]="post.invalid"></app-sendbutton>
+        </app-card-simple>
       </div>
-      <app-sendbutton></app-sendbutton>
     </app-row>
   </form>
 </div>

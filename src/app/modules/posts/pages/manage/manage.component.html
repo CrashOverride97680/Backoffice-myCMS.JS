@@ -1,0 +1,70 @@
+<div class="screen-correct bg-light m-0">
+
+  <form class="container pt-4" [formGroup]="post" (ngSubmit)="send()">
+    <app-alert *ngIf="problemAPI">
+      Connection problem with the server, the data could be lost, if the problem persists contact the system administrator!!
+    </app-alert>
+
+    <app-success *ngIf="successAPI">
+      <i class="fas fa-check-circle"></i> Post created correctly.
+    </app-success>
+
+    <app-warning *ngIf="warningAPI">
+      If you do not create categories, the form will never be valid so please create the category first at this <a routerLink="/categories/create" title="Create category">link</a> .
+    </app-warning>
+
+    <pages-title>Manage post</pages-title>
+    <div class="alert alert-dark" role="alert">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a></li>
+          <li class="breadcrumb-item"><a routerLink="/posts">Posts</a></li>
+          <li class="breadcrumb-item active text-capitalize" aria-current="page">Manage post</li>
+        </ol>
+      </nav>
+    </div>
+    <app-row>
+      <div class="col-7">
+        <pages-box
+          [title]="'Post content'"
+        >
+          <angular-editor [config]="editorConfig" formControlName="content"></angular-editor>
+        </pages-box>
+      </div>
+
+      <div class="col-5">
+        <app-card-simple
+          [title]="'General information'"
+          [titleClass]="'h5 text-uppercase font-weight-bold text-primary'"
+        >
+          <app-geninfo formControlName="lang"></app-geninfo>
+          <div formGroupName="category">
+            <app-category formControlName="codeCategory" [category]="category"  (ErrorApi)="warningChange()"></app-category>
+          </div>
+          <app-type formControlName="type"></app-type>
+          <app-title formControlName="title"></app-title>
+        </app-card-simple>
+
+        <app-card-simple
+          [title]="'Seo'"
+          [titleClass]="'h5 text-uppercase font-weight-bold text-primary'"
+          [cardClass]="'mt-3'"
+          formGroupName="seo"
+        >
+          <app-description formControlName="description"></app-description>
+        </app-card-simple>
+
+        <app-card-simple
+          [title]="'General Setting Post'"
+          [titleClass]="'h5 text-uppercase font-weight-bold text-primary'"
+          [cardClass]="'mt-3 mb-3'"
+        >
+          <app-important formControlName="important" [value]="important"></app-important>
+          <app-visibility formControlName="visible" [value]="checkbox"></app-visibility>
+
+          <app-sendbutton [disabled]="post.invalid"></app-sendbutton>
+        </app-card-simple>
+      </div>
+    </app-row>
+  </form>
+</div>

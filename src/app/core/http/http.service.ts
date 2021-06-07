@@ -9,11 +9,21 @@ import {
   HttpGetPostsNumbersInterceptor,
   HttpLogoutInterceptor,
   HttpPostInterceptor,
-  HttpInterceptor, HttpGetPostsVisibleNumberInterceptor, HttpGetPostsUnvisibleNumberInterceptor, HttpGetAllCategory
+  HttpInterceptor,
+  HttpGetPostsVisibleNumberInterceptor,
+  HttpGetPostsUnvisibleNumberInterceptor,
+  HttpGetAllCategory,
+  HttpStatusReturnedInterceptor,
+  HttpGetAllNumberCategory,
+  HttpPost,
+  HttpGetNumberImage,
+  HttpListImage
 } from '../interceptors/http.interceptor';
 import {
   LoginPrefixInterceptor,
-  GetPostsByMaxNumberPrefixInterceptor
+  GetPostsByMaxNumberPrefixInterceptor,
+  CreateCategoryPrefixInterceptor,
+  ModifyCategoryPrefixInterceptor
 } from '../interceptors/api-prefix.interceptor';
 @Injectable({
   providedIn: 'root'
@@ -92,10 +102,71 @@ export class HttpService {
     return this.http.get<HttpPostInterceptor[]>(url, { headers: { authorization: token }});
   }
 
-// Get ALL CATEGORY
+// GET ALL CATEGORY
   public getAllCategory(token: string): Observable<HttpGetAllCategory[]> {
     const url = `${environment.apiEntrypoint}/getAllCategory`;
     return this.http.get<HttpGetAllCategory[]>(url, { headers: { authorization: token } });
+  }
+
+// GET SINGLE CATEGORY
+  public getSingleCategory(token: string, code:string): Observable<HttpGetAllCategory> {
+    const url = `${environment.apiEntrypoint}/getSingleCategory`;
+    return this.http.post<HttpGetAllCategory>(url, { code },{ headers: { authorization: token } });
+  }
+
+// CREATE NEW CATEGORY
+  public createNewCategory(token: string, data: CreateCategoryPrefixInterceptor): Observable<HttpStatusReturnedInterceptor> {
+    const url = `${environment.apiEntrypoint}/createCategory`;
+    return this.http.post<HttpStatusReturnedInterceptor>(url, data, { headers: { authorization: token }});
+  }
+
+// MODIFY CATEGORY
+  public modifyCategory(token: string, data: ModifyCategoryPrefixInterceptor): Observable<HttpStatusReturnedInterceptor> {
+    const url = `${environment.apiEntrypoint}/modifyCategory`;
+    return this.http.put<HttpStatusReturnedInterceptor>(url, data, { headers: { authorization: token }});
+  }
+
+// GET ALL NUMBER CATEGORY
+  public getAllNumberCategory(token: string): Observable<HttpGetAllNumberCategory> {
+    const url = `${environment.apiEntrypoint}/getCategoryTotal`;
+    return this.http.get<HttpGetAllNumberCategory>(url, { headers: { authorization: token } });
+  }
+
+// GET ALL NUMBER CATEGORY
+  public getAllUnvisibleNumberCategory(token: string): Observable<HttpGetAllNumberCategory> {
+    const url = `${environment.apiEntrypoint}/getUnvisibleCategory`;
+    return this.http.get<HttpGetAllNumberCategory>(url, { headers: { authorization: token } });
+  }
+
+// GET ALL NUMBER CATEGORY
+  public getAllVisibleNumberCategory(token: string): Observable<HttpGetAllNumberCategory> {
+    const url = `${environment.apiEntrypoint}/getVisibleCategory`;
+    return this.http.get<HttpGetAllNumberCategory>(url, { headers: { authorization: token } });
+  }
+
+  public createPost(token: string, data: HttpPost): Observable<HttpStatusReturnedInterceptor> {
+    const url = `${environment.apiEntrypoint}/createpost`;
+    return this.http.post<HttpStatusReturnedInterceptor>(url, data, { headers: { authorization: token }});
+  }
+
+  public getSinglePost(token: string, code: string): Observable<HttpPost> {
+    const url = `${environment.apiEntrypoint}/getSinglePost`;
+    return this.http.post<HttpPost>(url, { code }, { headers: { authorization: token }});
+  }
+
+  public modifyPost(token: string, data: HttpPost): Observable<HttpStatusReturnedInterceptor[]> {
+    const url = `${environment.apiEntrypoint}/modifyPosts`;
+    return this.http.put<HttpStatusReturnedInterceptor[]>(url, data, { headers: { authorization: token }});
+  }
+
+  public getListImagesUploaded(token: string): Observable<HttpGetNumberImage> {
+    const url = `${environment.apiEntrypoint}/getNumberTotalImage`;
+    return this.http.get<HttpGetNumberImage>(url, { headers: { authorization: token } });
+  }
+
+  public getAllImages(token: string): Observable<HttpListImage[]> {
+    const url = `${environment.apiEntrypoint}/getListImagesUploaded`;
+    return this.http.get<HttpListImage[]>(url, { headers: { authorization: token } });
   }
 
 }

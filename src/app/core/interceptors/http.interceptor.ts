@@ -1,3 +1,9 @@
+
+export interface HttpStatusReturnedInterceptor {
+  number: string;
+  message: string;
+}
+
 export interface HttpInterceptor {
   token: string;
 }
@@ -69,5 +75,45 @@ export interface HttpGetAllCategory {
   titleSEO: string;
   important: string;
   subCategory: [];
-  updated: string
+  updated: string;
+}
+
+export interface HttpGetAllNumberCategory {
+  count: number;
+}
+
+export interface Seo {
+  description: string;
+}
+
+export interface Category {
+  codeCategory: string;
+}
+
+export interface HttpPost {
+  _id?: string;
+  lang: string;
+  type: string;
+  title: string;
+  seo: Seo;
+  content: string;
+  important: number;
+  visible: boolean;
+  category: Category[];
+  create?: string;
+}
+
+export interface HttpGetNumberImage {
+  count: number;
+}
+
+export interface HttpListImage {
+  _id: string;
+  created: string;
+  imgName: string;
+  originalFileName: string;
+  destination: string;
+  imgPath: string;
+  imageType: string;
+  size: number;
 }
