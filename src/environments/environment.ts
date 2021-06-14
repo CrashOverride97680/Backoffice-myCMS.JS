@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiEntrypoint: 'http://localhost/api',
-  mediaEntrypoint: 'http://localhost/media/'
+  mediaEntrypoint: 'http://localhost'
 };
 
 /*

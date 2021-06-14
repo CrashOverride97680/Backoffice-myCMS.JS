@@ -117,3 +117,25 @@ export interface HttpListImage {
   imageType: string;
   size: number;
 }
+
+export interface HttpListImageBase {
+  baseString: string;
+  created: string;
+  imgName: string;
+  imgPath: string;
+  originalFileName: string;
+}
+
+export interface HttpUserInfo {
+  admin: boolean;
+  confirmed: boolean;
+  create: string;
+  email: string;
+  modified: string;
+  name: string;
+  password: string;
+  surname: string;
+  updated: string;
+  username: string;
+  _id: string;
+}

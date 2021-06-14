@@ -40,3 +40,15 @@ export interface HttpPostPrefixInterceptor {
   visible: boolean;
   category: string;
 }
+
+export interface HttpBaseImagePrefixInterceptor {
+  images: string;
+  names: string;
+}
+
+export interface HttpUserModifyDataInterceptor {
+  email: string;
+  username: string;
+  name: string;
+  surname: string;
+}
