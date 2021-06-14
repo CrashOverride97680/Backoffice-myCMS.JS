@@ -41,6 +41,7 @@ export class PostsComponent {
         filter: false,
         valuePrepareFunction: (cell: string) => {
           const date = new Date(cell);
+          console.log(date);
           const year = date.getFullYear();
           let month = date.getMonth() + 1;
           let stringMonth = '';
@@ -49,8 +50,14 @@ export class PostsComponent {
           if (dt < 10) {
             stringDT = '0' + dt;
           }
+          else {
+            stringDT = dt.toString();
+          }
           if (month < 10) {
             stringMonth = '0' + month;
+          }
+          else {
+            stringMonth = month.toString();
           }
 
           return stringDT + '/' + stringMonth + '/' + year;

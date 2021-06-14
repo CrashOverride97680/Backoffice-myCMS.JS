@@ -53,8 +53,14 @@ export class CategoriesComponent {
           if (dt < 10) {
             stringDT = '0' + dt;
           }
+          else {
+            stringDT = dt.toString();
+          }
           if (month < 10) {
             stringMonth = '0' + month;
+          }
+          else {
+            stringMonth = month.toString();
           }
 
           return stringDT + '/' + stringMonth + '/' + year;

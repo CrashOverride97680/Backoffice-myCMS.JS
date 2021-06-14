@@ -3,7 +3,7 @@ import {Component, Input} from '@angular/core';
 @Component({
   selector: 'pages-table',
   templateUrl: './tablepages.component.html',
-  styles: []
+  styleUrls: ['./tablepages.component.scss']
 })
 export class TablePagesComponent {
   @Input() title = '';
