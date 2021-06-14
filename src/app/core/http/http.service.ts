@@ -1,6 +1,6 @@
 import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {
   HttpGetMailSubNumbersInterceptor,
@@ -17,13 +17,13 @@ import {
   HttpGetAllNumberCategory,
   HttpPost,
   HttpGetNumberImage,
-  HttpListImage
+  HttpListImage, HttpListImageBase, HttpUserInfo
 } from '../interceptors/http.interceptor';
 import {
   LoginPrefixInterceptor,
   GetPostsByMaxNumberPrefixInterceptor,
   CreateCategoryPrefixInterceptor,
-  ModifyCategoryPrefixInterceptor
+  ModifyCategoryPrefixInterceptor, HttpBaseImagePrefixInterceptor, HttpUserModifyDataInterceptor
 } from '../interceptors/api-prefix.interceptor';
 @Injectable({
   providedIn: 'root'
@@ -169,4 +169,38 @@ export class HttpService {
     return this.http.get<HttpListImage[]>(url, { headers: { authorization: token } });
   }
 
+  public uploadImage(token: string, formData: any): Observable<HttpStatusReturnedInterceptor> {
+    const url = `${environment.apiEntrypoint}/imgUpload`;
+    return this.http.post<HttpStatusReturnedInterceptor>(url, { formData } , { headers: { authorization: token }});
+  }
+
+  public uploadImageBase(token: string, baseImgForm: HttpBaseImagePrefixInterceptor): Observable<HttpStatusReturnedInterceptor> {
+    const url = `${environment.apiEntrypoint}/imgUploadBase`;
+    return this.http.post<HttpStatusReturnedInterceptor>(url, baseImgForm , { headers: { authorization: token }});
+  }
+
+  public getListImagesUploadedBase(token: string): Observable<HttpGetNumberImage> {
+    const url = `${environment.apiEntrypoint}/getBaseImageTotal`;
+    return this.http.get<HttpGetNumberImage>(url, { headers: { authorization: token } });
+  }
+
+  public getAllImagesBase(token: string): Observable<HttpListImageBase[]> {
+    const url = `${environment.apiEntrypoint}/getListImagesUploadedBase`;
+    return this.http.get<HttpListImageBase[]>(url, { headers: { authorization: token } });
+  }
+
+  public changePassword(token: string, data: { newPassword: string; }): Observable<HttpStatusReturnedInterceptor> {
+    const url = `${environment.apiEntrypoint}/resetPassword`;
+    return this.http.put<HttpStatusReturnedInterceptor>(url, data,{ headers: { authorization: token }});
+  }
+
+  public getUserInfoAdmin(token: string): Observable<HttpUserInfo> {
+    const url = `${environment.apiEntrypoint}/getUserInfoAdmin`;
+    return this.http.get<HttpUserInfo>(url, { headers: { authorization: token } });
+  }
+
+  public modifyUsers(token: string, data: HttpUserModifyDataInterceptor): Observable<HttpStatusReturnedInterceptor> {
+    const url = `${environment.apiEntrypoint}/modifyUsers`;
+    return this.http.put<HttpStatusReturnedInterceptor>(url, data,{ headers: { authorization: token } });
+  }
 }

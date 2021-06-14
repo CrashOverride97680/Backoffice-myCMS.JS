@@ -1,0 +1,28 @@
+<div class="screen-correct bg-light m-0">
+  <form [formGroup]="uploadForm" class="container pt-4" (ngSubmit)="upload()">
+    <app-alert *ngIf="problemAPI">
+      Connection problem with the server, the data could be lost, if the problem persists contact the system administrator!!
+    </app-alert>
+
+    <app-success *ngIf="successAPI">
+      <i class="fas fa-check-circle"></i> Image uploaded correctly.
+    </app-success>
+
+    <pages-title>Upload image</pages-title>
+    <div class="alert alert-dark" role="alert">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a></li>
+          <li class="breadcrumb-item"><a routerLink="/images">Images</a></li>
+          <li class="breadcrumb-item active text-capitalize" aria-current="page">Upload Image</li>
+        </ol>
+      </nav>
+    </div>
+
+    <label for="files" class="btn btn-primary">Select file</label>
+    <input id="files" hidden style="visibility:hidden;" type="file" (change)="onFileSelect($event)">
+    <span>{{file}}</span>
+    <button class="btn btn-success d-block mt-2" [disabled]="uploadForm.invalid"><i class="fas fa-upload"></i> Upload</button>
+  </form>
+</div>
+<app-spinner [view]="view"></app-spinner>
